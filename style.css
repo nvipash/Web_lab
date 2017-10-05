@@ -1,12 +1,24 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 
-/*body {
-  background-image: url("Maidan_Nezalezhnosti.jpg");
-  background-repeat: no-repeat;
-}*/
+body {
+  margin-left: 18%;
+  margin-right: 18%;
+  margin-top: 2%;
+  /*background-image: url("Maidan_Nezalezhnosti.jpg");
+  background-repeat: no-repeat;*/
+}
+
+.menu-main{
+  margin-left: 2%;
+  margin-right: 2%;
+}
 
 .text{
-  font-family: 'Ubuntu Condensed', sans-serif;
+  font-family: 'Oswald', sans-serif;
+}
+
+footer{
+  text-align: center;
 }
 
 h1{
@@ -14,24 +26,19 @@ h1{
   color: blue;
 }
 content, footer{
-  font-family: 'Ubuntu Condensed', sans-serif;
+  font-family: 'Oswald', sans-serif;
 }
-
 
 ul.submenu {
     display: none;
     background-color: white;
-    position: fixed;
+    position: absolute;
+    margin: 0px 20px 20px 20px;
+    padding: 0px 10px 10px 0px;
+    text-align: center;
     width: 150px;
-    border: 0.5px solid blue;
-    text-decoration: none;
-}
-ul.submenu > li {
-    display: block;
-}
-ul.submenu > li > a {
-    display: block;
-    color: white;
+    height: 130px;
+    border: 0.05px solid blue;
 }
 
 ul.menu-main > li:hover > ul.submenu {
@@ -45,17 +52,28 @@ ul.menu-main > li:hover > ul.submenu {
   text-align: center;
   background: white;
 }
-.menu-main li {display: inline-block;}
+
+.menu-main li {
+  display: inline-block;
+}
 .menu-main li:after {
   content: "|";
   color: #000000;
   display: inline-block;
-  vertical-align:top;
+  vertical-align: top;
 }
-.menu-main li:last-child:after {content: none;}
+
+.submenu li:after{
+  content: none;
+}
+
+.menu-main, li:last-child:after {
+  content: none;
+}
+
 .menu-main a {
   text-decoration: none;
-  font-family: 'Ubuntu Condensed', sans-serif;
+  font-family: 'Oswald', sans-serif;
   letter-spacing: 2px;
   position: relative;
   padding-bottom: 20px;
@@ -65,27 +83,24 @@ ul.menu-main > li:hover > ul.submenu {
   display: inline-block;
   transition: color .2s;
 }
-.menu-main a, .menu-main a:visited {color: #000000;}
-.menu-main a.current, .menu-main a:hover{color: #0000FF;}
-.menu-main a:before,
-.menu-main a:after {
-  content: "";
-  position: absolute;
-  height: 4px;
-  top: auto;
-  right: 50%;
-  bottom: -5px;
-  left: 50%;
-  background: #0000FF;
-  transition: .8s;
-}
-.menu-main a:hover:before, .menu-main .current:before {left: 0;}
-.menu-main a:hover:after, .menu-main .current:after {right: 0;}
+
+.menu-main a, .menu-main a:visited {color: #000000;}.menu-main a.current, .menu-main a:hover{color: #0000FF;}.menu-main a:before,.menu-main a:after
+
 @media (max-width: 550px) {
-.menu-main {padding-top: 0;}
-.menu-main li {display: block;}
-.menu-main li:after {content: none;}
-.menu-main a {
-  padding: 25px 0 20px;
-  margin: 0 30px;
+.menu-main {
+  padding-top: 0;
+}
+
+.menu-main li:after {
+  content: none;
+}
+
+.news_block{
+  width: 100%;
+  background: red;
+}
+
+.left_block, .center_block, .right_block{
+  float: left;
+  width: 25%;
 }
