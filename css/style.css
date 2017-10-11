@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+body {
+  margin-left: 18%;
+  margin-right: 18%;
+  margin-top: 2%;
+  /*background-image: url("Maidan_Nezalezhnosti.jpg");
+  background-repeat: no-repeat;*/
+}
+
+.logo{
+  float: left;
+}
+
+.menu-main{
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.text{
+  font-family: 'Oswald', sans-serif;
+}
+
+footer{
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+  color: blue;
+}
+content, footer{
+  font-family: 'Oswald', sans-serif;
+}
+
+ul.submenu {
+    display: none;
+    background-color: white;
+    position: absolute;
+    margin: 0px 20px 20px 20px;
+    padding: 0px 10px 10px 0px;
+    text-align: center;
+    width: 150px;
+    height: 130px;
+    border: 0.05px solid blue;
+}
+
+ul.menu-main > li:hover > ul.submenu {
+    display: block;
+}
+
+.menu-main {
+  list-style: none;
+  margin: 40px 0 5px;
+  padding: 25px 0 5px;
+  text-align: center;
+  background: white;
+}
+
+.menu-main li {
+  display: inline-block;
+}
+.menu-main li:after {
+  content: "|";
+  color: #000000;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.submenu li:after{
+  content: none;
+}
+
+.menu-main, li:last-child:after {
+  content: none;
+}
+
+.menu-main a {
+  text-decoration: none;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 2px;
+  position: relative;
+  padding-bottom: 20px;
+  margin: 0 34px 0 30px;
+  font-size: 17px;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: color .2s;
+}
+
+.menu-main a, .menu-main a:visited {color: #000000;}.menu-main a.current, .menu-main a:hover{color: #0000FF;}.menu-main a:before,.menu-main a:after
+
+@media (max-width: 550px) {
+.menu-main {
+  padding-top: 0;
+}
+
+.menu-main li:after {
+  content: none;
+}
+
+.lpnu:hover {
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+}
