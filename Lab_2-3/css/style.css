@@ -1,53 +1,51 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald');
-
+  @import url('https://fonts.googleapis.com/css?family=Oswald');
 body {
   margin-left: 18%;
   margin-right: 18%;
   margin-top: 2%;
-  /*background-image: url("Maidan_Nezalezhnosti.jpg");
-  background-repeat: no-repeat;*/
 }
 
-.logo{
+.logo {
   float: left;
 }
 
-.menu-main{
+.menu-main {
   margin-left: 2%;
   margin-right: 2%;
 }
 
-.text{
+.text {
   font-family: 'Oswald', sans-serif;
 }
 
-footer{
+footer {
   text-align: center;
 }
 
-h1{
+h1 {
   text-align: center;
   color: blue;
 }
-content, footer{
+
+content, footer {
   font-family: 'Oswald', sans-serif;
 }
 
 ul.submenu {
-    display: none;
-    background-color: white;
-    position: absolute;
-    margin: 0px 20px 20px 20px;
-    padding: 0px 10px 10px 0px;
-    text-align: center;
-    width: 150px;
-    height: 130px;
-    border: 0.05px solid blue;
+  display: none;
+  background-color: white;
+  position: absolute;
+  margin: 0px 20px 20px 20px;
+  padding: 0px 10px 10px 0px;
+  text-align: center;
+  width: 150px;
+  height: 130px;
+  border: 0.05px solid blue;
 }
 
-ul.menu-main > li:hover > ul.submenu {
-    display: block;
-    text-shadow: 2px 2px 4px #000000;
+ul.menu-main>li:hover>ul.submenu {
+  display: block;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 .menu-main {
@@ -79,7 +77,7 @@ ul.menu-main > li:hover > ul.submenu {
   vertical-align: top;
 }
 
-.submenu li:after{
+.submenu li:after {
   content: none;
 }
 
@@ -87,7 +85,7 @@ ul.menu-main > li:hover > ul.submenu {
   content: none;
 }
 
-.menu-main{
+.menu-main {
   animation-duration: 3s;
   animation-name: slidein;
 }
@@ -97,18 +95,18 @@ ul.menu-main > li:hover > ul.submenu {
     margin-left: 100%;
     width: 300%;
   }
-
   to {
     margin-left: 0%;
     width: 100%;
   }
 }
 
-.contacts{
+.contacts {
   animation-duration: 3s;
   animation-name: slidein;
   animation-direction: alternate;
 }
+
 .menu-main a {
   text-decoration: none;
   font-family: 'Oswald', sans-serif;
@@ -122,13 +120,18 @@ ul.menu-main > li:hover > ul.submenu {
   transition: color .5s;
 }
 
-.menu-main a, .menu-main a:visited {color: #000000;}.menu-main a.current, .menu-main a:hover{color: #0000FF;}.menu-main a:before,.menu-main a:after
-
-@media (max-width: 550px) {
-.menu-main {
-  padding-top: 0;
+.menu-main a, .menu-main a:visited {
+  color: #000000;
 }
 
-.menu-main li:after {
-  content: none;
+.menu-main a.current, .menu-main a:hover {
+  color: #0000FF;
 }
+
+.menu-main a:before, .menu-main a:after @media (max-width: 550px) {
+  .menu-main {
+    padding-top: 0;
+  }
+  .menu-main li:after {
+    content: none;
+  }
