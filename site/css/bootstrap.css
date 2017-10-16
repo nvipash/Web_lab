@@ -542,7 +542,7 @@ pre code {
   overflow-y: scroll
 }
 
-.container {
+.content {
   margin-right: auto;
   margin-left: auto;
   padding-right: 15px;
@@ -551,30 +551,30 @@ pre code {
 }
 
 @media (min-width: 576px) {
-  .container {
+  .content {
     max-width: 540px
   }
 }
 
-@media (min-width: 816px) {
-  .container {
+@media (min-width: 820px) {
+  .content {
     max-width: 720px
   }
 }
 
 @media (min-width: 992px) {
-  .container {
+  .content {
     max-width: 960px
   }
 }
 
 @media (min-width: 1200px) {
-  .container {
+  .content {
     max-width: 1140px
   }
 }
 
-.container-fluid {
+.content-fluid {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
@@ -881,7 +881,7 @@ pre code {
   }
 }
 
-@media (min-width: 816px) {
+@media (min-width: 820px) {
   .col-md {
     -ms-flex-preferred-size: 0;
     flex-basis: 0;
@@ -1457,7 +1457,7 @@ pre code {
 .form-control {
   display: block;
   width: 100%;
-  padding: .5rem .75rem;
+  padding: .5rem .5rem;
   font-size: 1rem;
   line-height: 1.25;
   color: #495057;
@@ -3052,7 +3052,7 @@ tbody.collapse.show {
   padding: .5rem 1rem
 }
 
-.navbar>.container, .navbar>.container-fluid {
+.navbar>.content, .navbar>.content-fluid {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -3134,7 +3134,7 @@ tbody.collapse.show {
 }
 
 @media (max-width: 575px) {
-  .navbar-expand-sm>.container, .navbar-expand-sm>.container-fluid {
+  .navbar-expand-sm>.content, .navbar-expand-sm>.content-fluid {
     padding-right: 0;
     padding-left: 0
   }
@@ -3164,7 +3164,7 @@ tbody.collapse.show {
     padding-right: .5rem;
     padding-left: .5rem
   }
-  .navbar-expand-sm>.container, .navbar-expand-sm>.container-fluid {
+  .navbar-expand-sm>.content, .navbar-expand-sm>.content-fluid {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap
   }
@@ -3177,14 +3177,14 @@ tbody.collapse.show {
   }
 }
 
-@media (max-width: 767px) {
-  .navbar-expand-md>.container, .navbar-expand-md>.container-fluid {
+@media (max-width: 780px) {
+  .navbar-expand-md>.content, .navbar-expand-md>.content-fluid {
     padding-right: 0;
     padding-left: 0
   }
 }
 
-@media (min-width: 816px) {
+@media (min-width: 820px) {
   .navbar-expand-md {
     -ms-flex-direction: row;
     flex-direction: row;
@@ -3208,7 +3208,7 @@ tbody.collapse.show {
     padding-right: .5rem;
     padding-left: .5rem
   }
-  .navbar-expand-md>.container, .navbar-expand-md>.container-fluid {
+  .navbar-expand-md>.content, .navbar-expand-md>.content-fluid {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap
   }
@@ -3222,7 +3222,7 @@ tbody.collapse.show {
 }
 
 @media (max-width: 991px) {
-  .navbar-expand-lg>.container, .navbar-expand-lg>.container-fluid {
+  .navbar-expand-lg>.content, .navbar-expand-lg>.content-fluid {
     padding-right: 0;
     padding-left: 0
   }
@@ -3252,7 +3252,7 @@ tbody.collapse.show {
     padding-right: .5rem;
     padding-left: .5rem
   }
-  .navbar-expand-lg>.container, .navbar-expand-lg>.container-fluid {
+  .navbar-expand-lg>.content, .navbar-expand-lg>.content-fluid {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap
   }
@@ -3266,7 +3266,7 @@ tbody.collapse.show {
 }
 
 @media (max-width: 1199px) {
-  .navbar-expand-xl>.container, .navbar-expand-xl>.container-fluid {
+  .navbar-expand-xl>.content, .navbar-expand-xl>.content-fluid {
     padding-right: 0;
     padding-left: 0
   }
@@ -3296,7 +3296,7 @@ tbody.collapse.show {
     padding-right: .5rem;
     padding-left: .5rem
   }
-  .navbar-expand-xl>.container, .navbar-expand-xl>.container-fluid {
+  .navbar-expand-xl>.content, .navbar-expand-xl>.content-fluid {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap
   }
@@ -3318,7 +3318,7 @@ tbody.collapse.show {
   justify-content: flex-start
 }
 
-.navbar-expand>.container, .navbar-expand>.container-fluid {
+.navbar-expand>.content, .navbar-expand>.content-fluid {
   padding-right: 0;
   padding-left: 0
 }
@@ -3342,7 +3342,7 @@ tbody.collapse.show {
   padding-left: .5rem
 }
 
-.navbar-expand>.container, .navbar-expand>.container-fluid {
+.navbar-expand>.content, .navbar-expand>.content-fluid {
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap
 }
@@ -3858,7 +3858,7 @@ tbody.collapse.show {
   background-color: #1d2124
 }
 
-.jumbotron {
+.header {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
   background-color: #e9ecef;
@@ -3866,12 +3866,12 @@ tbody.collapse.show {
 }
 
 @media (min-width: 576px) {
-  .jumbotron {
+  .header {
     padding: 4rem 2rem
   }
 }
 
-.jumbotron-fluid {
+.header-fluid {
   padding-right: 0;
   padding-left: 0;
   border-radius: 0
@@ -5194,7 +5194,7 @@ a.bg-dark:focus, a.bg-dark:hover {
   }
 }
 
-@media (min-width: 816px) {
+@media (min-width: 820px) {
   .d-md-none {
     display: none!important
   }
@@ -5620,7 +5620,7 @@ a.bg-dark:focus, a.bg-dark:hover {
   }
 }
 
-@media (min-width: 816px) {
+@media (min-width: 820px) {
   .flex-md-row {
     -ms-flex-direction: row!important;
     flex-direction: row!important
@@ -6001,7 +6001,7 @@ a.bg-dark:focus, a.bg-dark:hover {
   }
 }
 
-@media (min-width: 816px) {
+@media (min-width: 820px) {
   .float-md-left {
     float: left!important
   }
@@ -6818,7 +6818,7 @@ a.bg-dark:focus, a.bg-dark:hover {
   }
 }
 
-@media (min-width: 816px) {
+@media (min-width: 820px) {
   .m-md-0 {
     margin: 0!important
   }
@@ -7762,7 +7762,7 @@ a.bg-dark:focus, a.bg-dark:hover {
   }
 }
 
-@media (min-width: 816px) {
+@media (min-width: 820px) {
   .text-md-left {
     text-align: left!important
   }
