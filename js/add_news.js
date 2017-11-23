@@ -1,6 +1,9 @@
-//Adding News to news.html
+function isOnline() {
+  return window.navigator.onLine;
+}
 
-$(document).ready(function() {
+//Loading photo for future adding to news.html
+$(document).ready(function addImage(input, n) {
   function readURL(input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
@@ -15,12 +18,15 @@ $(document).ready(function() {
     readURL(this);
   });
 
+  //Check news fields info
   $(document).on("click", "#send_news", function() {
 
     var title = $("#title").val();
     var description_short = $("#description_short").val();
     var description_long = $("#description_long").val();
     var error = false;
+
+    //Errors info
     if (title.length > 100) {
       document.getElementById("title").style.borderColor = "red";
       $("#title").notify("Не більше 100 символів");

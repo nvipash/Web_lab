@@ -1,17 +1,27 @@
+function isOnline() {
+  return window.navigator.onLine;
+}
 //Adding Response to response.html
 function addResponse() {
   var responseText = document.getElementById("comment");
   var nameText = document.getElementById("name");
   if (nameText.value == "") {
-    alert("Вкажіть ваше ім'я");
+    document.getElementById("name").style.borderColor = "red";
+    $("#name").notify("Вкажіть ваше ім'я");
+    error = true;
     return;
   }
   if (responseText.value == "") {
-    alert("Заповніть поле відгуку");
+    document.getElementById("comment").style.borderColor = "red";
+    $("#comment").notify("Заповніть поле відгуку");
+    error = true;
     return;
   }
+  //Get elements from file
   var responseField = document.getElementById("newResponseField");
   var element = document.getElementById("responses");
+
+  //Initialize elements
   var responseRow = document.createElement("div");
   responseRow.setAttribute("class", 'card');
   var responseCol = document.createElement("div");
@@ -23,9 +33,10 @@ function addResponse() {
   var responseHeaderDate = document.createElement("span");
   var responseHeaderDateItalic = document.createElement("i");
   var date = new Date();
-  var dateString = "";
-  dateString = date.getDate() + "." + date.getMonth() + "." + (date.getFullYear()) +
+  var dateString = date.getDate() + "." + (date.getMonth() + 1) + "." + (date.getFullYear()) +
     ", " + date.getHours() + ":" + date.getMinutes();
+
+  //Transfer data to addResponse()
   responseHeaderDateItalic.innerHTML = dateString;
   responseHeaderName.innerHTML = nameText.value + " ";
   responseFill.innerHTML = responseText.value;
@@ -36,7 +47,6 @@ function addResponse() {
   responseCol.appendChild(responseFill);
   responseRow.appendChild(responseCol);
   element.insertBefore(responseRow, responseField);
-  element.insertBefore(document.createElement("hr"), responseField);
   responseText.value = "";
   nameText.value = "";
 }
