@@ -5,7 +5,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
+  <meta name="descriptioniption" content="">
   <title>Правове регулювання співробітництва України та ЄС з питань надання міжнародної технічної допомоги Доц. Михайлів М. О.</title>
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.css" rel="stylesheet">
@@ -58,33 +58,36 @@
   <div class="content">
     <div class="card">
       <div class="row">
-        <div class="col-lg-6 col-sm-12 col-xs-12">
-          <h5>Завантажити фото:</h5>
-          <div class="form-group row">
-            <div class="col-sm-10 col-xs-3">
-              <label class="custom-file">
-                <input type="file" id="file2" class="custom-file-input">
-                <span class="custom-file-control"></span>
-              </label>
+        <div class="col-lg-6 col-sm-6 col-xs-6">
+          <form name="form" action="#" method="post" id="form" onsubmit="return false">
+            <div class="col-xs-9 col-lg-9">
+              <div class="input-group">
+                <label class="btn btn-success btn-file btn-block">
+     Додати зображення <input type="file" id="image_file" style="display: none;">
+ </label>
+              </div>
             </div>
-          </div>
         </div>
-        <div class="col-lg-6 col-sm-12 col-xs-12">
+        <div class="col-lg-6 col-sm-6 col-xs-6 ">
+          <img src="images/add_image.svg " height="50px" width="50px" id="img" class="img responsive" style=" display: block; margin: auto;">
+        </div>
+        <div class="col-lg-6 col-sm-6 col-xs-6">
           <h5>Додати заголовок:</h5>
           <form role="form">
             <div class="form-group">
-              <input type="text" placeholder="Заголовок" class="form-control">
+              <input type="text" id="title" placeholder="Заголовок" class="form-control">
+            </div>
+            <h5>Додати короткий опис:</h5>
+            <div class="form-group">
+              <textarea class="form-control" rows="2 " id="description_short" placeholder="Короткий опис"></textarea>
             </div>
         </div>
-        <div class="col-lg-12 col-sm-12 col-xs-12">
-          <h5>Додати опис:</h5>
+        <div class="col-lg-6 col-sm-6 col-xs-6">
+          <h5>Додати детальний опис:</h5>
           <div class="form-group">
-            <textarea class="form-control" rows="3" placeholder="Короткий опис"></textarea>
+            <textarea class="form-control" rows="7" id="description_long" placeholder="Довгий опис"></textarea>
           </div>
-          <div class="form-group">
-            <textarea class="form-control" rows="10" placeholder="Довгий опис"></textarea>
-          </div>
-          <button type="submit" class="btn btn-success rg">Відправити статтю</button>
+          <button type="submit" id="send_news" class="btn btn-success rg">Відправити статтю</button>
           </form>
         </div>
       </div>
@@ -95,11 +98,14 @@
   </div>
   <!-- Bootstrap core JavaScript -------------------------------------------------------->
   <!-- Placed at the end of the document so the pages load faster ----------------------->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.min.js "></script>
+  <script src="js/popper.min.js "></script>
+  <script src="js/bootstrap.min.js "></script>
   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <script src="js/ie10-viewport-bug-workaround.js"></script>
+  <script src="js/ie10-viewport-bug-workaround.js "></script>
+  <!-- Features of adding content -->
+  <script src="http://rawgit.com/notifyjs/notifyjs/master/dist/notify.js "></script>
+  <script src="js/add_news.js "></script>
 </body>
 
 </html>

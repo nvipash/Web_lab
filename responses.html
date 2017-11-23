@@ -56,40 +56,45 @@
     </div>
   </nav>
   <div class="content">
-    <br />
-    <div class="card">
-      <h2 class="response">Вася Пупкін</h2><time>&nbsp &nbsp &nbsp 14.10.2017</time>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-    <br /><br />
-    <div class="card">
-      <h2 class="response">Вася Пупкін</h2><time>&nbsp &nbsp &nbsp 14.10.2017</time>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-    <br /><br />
-  </div>
-  <div class="content">
-    <form role="form">
-      <div class="form-group">
-        <label class="sz" for="comment">Твій відгук: </label>
-        <textarea class="form-control" rows="5" id="comment"></textarea>
+    <br>
+    <div id="responses">
+      <div class="card">
+        <p>
+          <span class="h2 pull-left">Вася Пупкін</span>
+          <span><i>11.11.2017, 14:00</i></span>
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
       </div>
-      <button type="submit" class="btn btn-success rg">Відправити</button>
-    </form>
-    <br />
-    <footer>
-      <p>Copyright © All Rights Reserved</p>
-    </footer>
-  </div>
+      <br /><br />
+      <!--- Response form ---!>
+      <div class="card" id="newResponseField">
+        <h4 class="block-header">Додайте відгук</h4>
+      </br>
+        <div class="form-group">
+          <textarea class="form-control" rows="1" id="name" placeholder="Вкажіть ваше ім'я"></textarea>
+          <br>
+          <textarea class="form-control" rows="4" id="comment" placeholder = "Введіть текст відгуку"></textarea>
+          <br />
+        <button class="btn btn-success btn-block" type="submit" onclick="addResponse()">Відправити</button>
+      </div>
+</div>
+</div>
+<footer>
+<p>Copyright © All Rights Reserved</p>
+</footer>
+
   <!-- Bootstrap core JavaScript -------------------------------------------------------->
-  <!-- Placed at the end of the document so the pages load faster ----------------------->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <script src="js/ie10-viewport-bug-workaround.js"></script>
+      <!-- Placed at the end of the document so the pages load faster ----------------------->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+      <script src="js/ie10-viewport-bug-workaround.js"></script>
+      <!-- Features of adding content -->
+      <script src="js/add_response.js"></script>
 </body>
 
 </html>
