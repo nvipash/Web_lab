@@ -1,3 +1,9 @@
+var useLocalStorage = false;
+
+function switchUseLS() {
+    useLocalStorage = !useLocalStorage;
+}
+
 function isOnline() {
     return window.navigator.onLine;
 }
@@ -21,7 +27,7 @@ function getNews() {
 }
 
 function addNews() {
-    var DEFAULT_PHOTO = "images/add_image.svg";
+    var DEFAULT_PHOTO = "images/add_images.svg";
     var imageForm = document.getElementById("userInputFile");
     var newsHeader = document.getElementById("header");
     var newsShortText = document.getElementById("shortText");
@@ -57,10 +63,49 @@ function addNews() {
 }
 
 function addToStorage(newsItem) {
-    var news = getNews();
-    news.push(newsItem);
-    localStorage.setItem('news', JSON.stringify(news));
-    return false;
+    if (useLocalStorage) {
+        var news = getNews();
+        news.push(newsItem);
+        localStorage.setItem('news', JSON.stringify(news));
+        return false;
+    } else {
+        var openDB = indexedDB.open("news", 1);
+
+        openDB.onerror = function (event) {
+            alert("Error occurred when loading news");
+        };
+        openDB.onupgradeneeded = function () {
+            var db = openDB.result;
+            var store = db.createObjectStore("news", {
+                keyPath: "header"
+            });
+            store.createIndex("header", "header", {
+                unique: false
+            });
+            store.createIndex("shortText", "shortText", {
+                unique: false
+            });
+            store.createIndex("fullText", "fullText", {
+                unique: false
+            });
+            store.createIndex("image", "image", {
+                unique: false
+            });
+        };
+        openDB.onsuccess = function (event) {
+            var db = openDB.result;
+            var tx = db.transaction(["news"], "readwrite");
+            var store = tx.objectStore("news");
+            var addFeedback = store.put(newsItem);
+            addFeedback.onsuccess = function (event) {}
+            addFeedback.onerror = function (event) {
+                alert("Error occurred when loading news");
+            }
+            tx.oncomplete = function () {
+                db.close();
+            }
+        };
+    }
 }
 
 function loadPreviewPhoto() {
@@ -75,18 +120,59 @@ function loadPreviewPhoto() {
 
 function createNews(news) {
     var element = document.getElementById("newsRow");
-    element.innerHTML += '<div class="col-lg-4 card"> <center><img src = "' + news.image + '" alt = "News" width="300" height = "300"></center><center><h3>'
-        + news.header + '</h3></center><p>' + news.shortText + '</p></div>'
+    element.innerHTML += '<div class="col-lg-4"> <center><img src = "' + news.image + '" alt = "News" width="300" height = "300"></center><center><h3>' +
+        news.header + '</h3></center><p>' + news.shortText + '</p></div>'
 }
 
 function show() {
-    if (isOnline()) {
-        //server stuff
-    }
-    var news = getNews();
-    if ((typeof news !== 'undefined') && (news.length > 0)) {
-        for (var i = 0; i < news.length; i++) {
-            createNews(news[i]);
+    if (useLocalStorage) {
+        var news = new Array;
+        var news_item = localStorage.getItem('news');
+        if (news_item !== null) {
+            news = JSON.parse(news_item);
+        }
+        if ((typeof news !== 'undefined') && (news.length > 0)) {
+            for (var i = 0; i < news.length; i++) {
+                createNews(news[i]);
+            }
+        }
+    } else {
+        var openDB = indexedDB.open("news", 1);
+        openDB.onupgradeneeded = function () {
+            var db = openDB.result;
+            var store = db.createObjectStore("news", {
+                keyPath: "header"
+            });
+            store.createIndex("header", "header", {
+                unique: false
+            });
+            store.createIndex("shortText", "shortText", {
+                unique: false
+            });
+            store.createIndex("fullText", "fullText", {
+                unique: false
+            });
+            store.createIndex("image", "image", {
+                unique: false
+            });
+        }
+        openDB.onsuccess = function (event) {
+            var db = openDB.result;
+            var tx = db.transaction("news", "readwrite");
+            var store = tx.objectStore("news");
+            store.openCursor().onsuccess = function (event) {
+                var cursor = event.target.result;
+                if (cursor) {
+                    var tempNews = new News(cursor.value.header, cursor.value.shortText, cursor.value.fullText, cursor.value.image);
+                    //console.log(tempFeed);
+                    //feedbacks.push(tempFeed);
+                    createNews(tempNews);
+                    cursor.continue();
+                }
+            };
+            tx.oncomplete = function () {
+                db.close();
+            }
         }
     }
 }

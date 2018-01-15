@@ -1,6 +1,13 @@
+var useLocalStorage = false;
+
+function switchUseLS() {
+  useLocalStorage = !useLocalStorage;
+}
+
 function isOnline() {
   return window.navigator.onLine;
 }
+
 class Response {
   constructor(name, response, date) {
     this.name = name;
@@ -10,30 +17,76 @@ class Response {
 }
 
 function addToStorage(response) {
-  var responses = getResponses();
-  responses.push(response);
-  localStorage.setItem('responses', JSON.stringify(responses));
-  //show();
-  return false;
+  if (useLocalStorage) {
+    var responses = new Array;
+    var response_item = localStorage.getItem('responses');
+    if (response_item !== null) {
+      responses = JSON.parse(response_item);
+    }
+    responses.push(response);
+    localStorage.setItem('responses', JSON.stringify(responses));
+    return false;
+  } else {
+    var openDB = indexedDB.open("response", 1);
+
+    openDB.onerror = function (event) {
+      alert("Error occurred when loading response");
+    };
+    openDB.onsuccess = function (event) {
+      var db = openDB.result;
+      var tx = db.transaction(["responses"], "readwrite");
+      var store = tx.objectStore("responses");
+      var addResponse = store.put(response);
+      addResponse.onsuccess = function (event) {
+        alert("Response created");
+      }
+      addResponse.onerror = function (event) {
+        alert("Error occurred when loading responses");
+      }
+      tx.oncomplete = function () {
+        db.close();
+      }
+    };
+  }
 }
 
-function getResponses() {
-  var responses = new Array;
-  var response_item = localStorage.getItem('responses');
-  if (response_item !== null) {
-    responses = JSON.parse(response_item);
-  }
-  return responses;
-}
-
-function show() {
-  if (isOnline()) {
-    //server stuff
-  }
-  var responses = getResponses();
-  if ((typeof responses !== 'undefined') && (responses.length > 0)) {
-    for (var i = 0; i < responses.length; i++) {
-      createResponse(responses[i]);
+function showLocalInfo() {
+  if (useLocalStorage) {
+    var response_item = localStorage.getItem('responses');
+    if (response_item !== null) {
+      responses = JSON.parse(response_item);
+    }
+    if ((typeof responses !== 'undefined') && (responses.length > 0)) {
+      for (var i = 0; i < responses.length; i++) {
+        createResponse(responses[i]);
+      }
+    }
+  } else {
+    var openDB = indexedDB.open("response", 1);
+    openDB.onupgradeneeded = function () {
+      var db = openDB.result;
+      var store = db.createObjectStore("responses", { keyPath: "name" });
+      store.createIndex("name", "name", { unique: false });
+      store.createIndex("response", "response", { unique: false });
+      store.createIndex("date", "date", { unique: false });
+    }
+    openDB.onsuccess = function (event) {
+      var db = openDB.result;
+      var tx = db.transaction("responses", "readwrite");
+      var store = tx.objectStore("responses");
+      store.openCursor().onsuccess = function (event) {
+        var cursor = event.target.result;
+        if (cursor) {
+          var tempFeed = new Response(cursor.value.name, cursor.value.response, cursor.value.date);
+          //console.log(tempFeed);
+          //responses.push(tempFeed);
+          createResponse(tempFeed);
+          cursor.continue();
+        }
+      };
+      tx.oncomplete = function () {
+        db.close();
+      }
     }
   }
 }
@@ -51,9 +104,6 @@ function addResponse() {
     return;
   }
   var response = new Response(nameText.value, responseText.value, date);
-  if (isOnline()) {
-    //server stuff
-  }
   addToStorage(response);
   createResponse(response);
   responseText.value = "";
@@ -61,34 +111,19 @@ function addResponse() {
 }
 
 function createResponse(response) {
+
   var responseField = document.getElementById("newResponseField");
   var element = document.getElementById("responses");
+
   var date = new Date(response.date);
   var nameText = response.name;
   var responseText = response.response;
+  var dateString = date.getDate() + "." + (date.getMonth() + 1) + "." + (date.getFullYear())
+    + ", " + date.getHours() + ":" + date.getMinutes();
+
   var responseRow = document.createElement("div");
-  responseRow.setAttribute("class", "row-lg");
-  var responseCol = document.createElement("div");
-  responseCol.setAttribute("class", 'card');
-  var responseHeader = document.createElement("p");
-  var responseFill = document.createElement("p");
-  var responseHeaderName = document.createElement("span");
-  responseHeaderName.setAttribute("class", "h2 pull-left");
-  var responseHeaderDate = document.createElement("span");
-  var responseHeaderDateItalic = document.createElement("i");
-  var dateString = "";
-  dateString = date.getDate() + "." + (date.getMonth() + 1) + "." + (date.getFullYear()) +
-    ", " + date.getHours() + ":" + date.getMinutes();
-  responseHeaderDateItalic.innerHTML = dateString;
-  responseHeaderName.innerHTML = nameText + " ";
-  responseFill.innerHTML = responseText;
-  responseHeaderDate.appendChild(responseHeaderDateItalic);
-  responseHeader.appendChild(responseHeaderName);
-  responseHeader.appendChild(responseHeaderDate);
-  responseCol.appendChild(responseHeader);
-  responseCol.appendChild(responseFill);
-  responseRow.appendChild(responseCol);
+  responseRow.innerHTML = '<div class="card"><p><span class="h2 pull-left">' + nameText + ' ' +
+    '</span><span><i>' + dateString + '</i></span></p><p>' + responseText + '</p></div></div><hr>';
+
   element.insertBefore(responseRow, responseField);
-  element.insertBefore(document.createElement("hr"), responseField);
 }
-show();
