@@ -16,9 +16,10 @@
 <body data-gr-c-s-loaded="true">
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <img src="images/logo.png" </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
@@ -26,7 +27,9 @@
           <a class="nav-item">&nbsp &nbsp</a>
         </div>
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Головна <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="index.html">Головна
+            <span class="sr-only">(current)</span>
+          </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="news.html">Новини</a>
@@ -56,46 +59,45 @@
     </div>
   </nav>
   <div class="content">
+    <br>
+    <center>
+      <h1>Додати новину</h1>
+    </center>
+    <br>
     <div class="card">
+      <br>
       <div class="row">
-        <div class="col-lg-6 col-sm-6 col-xs-6">
-          <form name="form" action="#" method="post" id="form" onsubmit="return false">
-            <div class="col-xs-9 col-lg-9">
-              <div class="input-group">
-                <label onclick="addImage()" class="btn btn-success btn-file btn-block">
-     Додати зображення <input type="file"  id="image_file" style="display: none;">
- </label>
-              </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-sm-6 col-xs-6 ">
-          <img src="images/add_image.svg " height="50px" width="50px" id="img" class="img responsive" style=" display: block; margin: auto;">
-        </div>
-        <div class="col-lg-6 col-sm-6 col-xs-6">
-          <h5>Додати заголовок:</h5>
-          <form role="form">
-            <div class="form-group">
-              <input type="text" id="title" placeholder="Заголовок" class="form-control">
-            </div>
-            <h5>Додати короткий опис:</h5>
-            <div class="form-group">
-              <textarea class="form-control" rows="2 " id="description_short" placeholder="Короткий опис"></textarea>
-            </div>
-        </div>
-        <div class="col-lg-6 col-sm-6 col-xs-6">
-          <h5>Додати детальний опис:</h5>
+        <div class="col">
           <div class="form-group">
-            <textarea class="form-control" rows="7" id="description_long" placeholder="Довгий опис"></textarea>
+            <input id="my-file-selector" class="form-control" type="file" accept="image/*" class="btn btn-choose btn-success btn-outline btn-block"
+              id="userInputFile" type="file" aria-describedby="fileHelp" onchange="loadPreviewPhoto()">
+            <center>
+              <small id="fileHelp" class="form-text text-muted">Вибрати фото статті.</small>
+            </center>
           </div>
-          <button type="submit" id="send_news" class="btn btn-success rg">Відправити статтю</button>
-          </form>
+          <center>
+            <img src="images/add_image.svg" alt="your photo" class="img-fluid" id="user-image" width='150px'>
+
+            <br>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <input class="form-control" type="text" id="header" placeholder="Заголовок...">
+            <br>
+            <textarea class="form-control" rows="3" id="shortText" placeholder="Короткий опис статті..."></textarea>
+            <br>
+            <textarea class="form-control" rows="6" id="newsText" placeholder="Стаття..."></textarea>
+          </div>
+          <button class="btn btn-success" type="submit" onclick="addNews()">Відправити</button>
         </div>
       </div>
     </div>
-    <footer>
-      <p>Copyright © All Rights Reserved</p>
-    </footer>
   </div>
+  <footer>
+    <p>Copyright © All Rights Reserved</p>
+  </footer>
+  </div>
+  <script src="js/news.js"></script>
   <!-- Bootstrap core JavaScript -------------------------------------------------------->
   <!-- Placed at the end of the document so the pages load faster ----------------------->
   <script src="js/jquery.min.js "></script>
@@ -105,7 +107,6 @@
   <script src="js/ie10-viewport-bug-workaround.js "></script>
   <!-- Features of adding content -->
   <script src="js/notify.js "></script>
-  <script src="js/add_news.js "></script>
 </body>
 
 </html>
