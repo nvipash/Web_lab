@@ -1,5 +1,5 @@
 # Work of "Web-technologies and Web-design" subject
-I created the website with server step by step for the 1st semester of 2nd course of the "Web-technologies and Web-design" subject. The work is divided into 11 tasks, in which students will post the functionality of the website in accordance with the material.
+I created the website with server step by step for the 3rd semester of 2nd course of the "Web-technologies and Web-design" subject. The work is divided into 11 tasks, in which students will post the functionality of the website in accordance with the material.
 
 _Thanks for watching_ ☺️
 ## How to run your Node.JS server🧐
